@@ -97,5 +97,12 @@ export default {
      * If false, slides lory to the first slide on window resize.
      * @rewindOnResize {boolean}
      */
-    rewindOnResize: true
+    rewindOnResize: true,
+
+    /**
+     * If true, takes into account css offsetting, eg. margins / smaller widths,
+     * ergo will calculate the translate values based on frameWidth and not slide.
+     * @slideOffset {boolean}
+     */
+    slideOffset: false
 };

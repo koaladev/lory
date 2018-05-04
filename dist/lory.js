@@ -437,7 +437,8 @@ function lory(slider, opts) {
             rewindSpeed = _options5.rewindSpeed,
             rewindOnResize = _options5.rewindOnResize,
             classNameActiveSlide = _options5.classNameActiveSlide,
-            initialIndex = _options5.initialIndex;
+            initialIndex = _options5.initialIndex,
+            slideOffset = _options5.slideOffset;
 
 
         slidesWidth = slideContainer.getBoundingClientRect().width || slideContainer.offsetWidth;
@@ -445,7 +446,7 @@ function lory(slider, opts) {
 
         if (frameWidth === slidesWidth) {
             slidesWidth = slides.reduce(function (previousValue, slide) {
-                return previousValue + slide.getBoundingClientRect().width || slide.offsetWidth;
+                return previousValue + (slideOffset ? frameWidth : slide.getBoundingClientRect().width || slide.offsetWidth);
             }, 0);
         }
 
@@ -991,7 +992,14 @@ exports.default = {
    * If false, slides lory to the first slide on window resize.
    * @rewindOnResize {boolean}
    */
-  rewindOnResize: true
+  rewindOnResize: true,
+
+  /**
+   * If true, takes into account css offsetting, eg. margins / smaller widths,
+   * ergo will calculate the translate values based on frameWidth and not slide.
+   * @slideOffset {boolean}
+   */
+  slideOffset: false
 };
 
 /***/ }),
